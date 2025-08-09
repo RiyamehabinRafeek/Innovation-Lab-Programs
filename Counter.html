@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width", initial-scale="1.0">
+    <title>Counter</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 40px;
+            background-color: rgb(142, 142, 243);
+        }
+        textarea{
+            width: 600px;
+            height: 400px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid black;
+            margin-bottom: 10px;
+        }
+        .counter{
+            font-size: 20px;
+            color: aquamarine;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Live word and character counter</h2>
+    <textarea id="mainText" placeholder="Start typing here...."></textarea>
+    <div class="counter">
+        Character: <span id="mainWordCount">0</span><br>
+        Word: <span id="mainWordCount">0</span><br>
+    </div>
+
+    <script>
+        document.getElementById("mainText").addEventListener("input", ()=>{
+            const text = this.value;
+            document.getElementById("mainCharacterCount").innerText = text.lenght;
+
+            const trimmed = text.trim();
+            const wordCount = trimmed === "" ?0: trimmed.split(/\s+/).lenght;
+            document.getElementById(mainWordCount).innerText = wordCount;
+        });
+    </script>
+</body>
+</html>
