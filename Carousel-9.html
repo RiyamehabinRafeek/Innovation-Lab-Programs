@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Image Slider</title>
+            <style>
+                .slider {
+                    text-align: center;
+                    position: relative;
+                    width: 60%;
+                    margin: auto;
+                }
+                .slider img {
+                    width: 90%;
+                    height: auto;
+                }
+                .slider button {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    padding: 10px;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                }
+                #prevBtn {
+                    left: 10px;
+                }
+                #nextBtn {
+                    right: 10px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="slider">
+                <img src="https://bakewithzoha.com/wp-content/uploads/2025/06/tiramisu-5-1025x1536.jpg" class="slider-image" alt="Image 1">
+                <button id="prevBtn">Previous</button>
+                <button id="nextBtn">Next</button>
+            </div>
+            <script>
+                let images = ["https://bakewithzoha.com/wp-content/uploads/2025/06/tiramisu-5-1025x1536.jpg", "https://butternutbakeryblog.com/wp-content/uploads/2024/04/strawberry-cheesecake-1024x1536.jpg", "https://www.shutterstock.com/image-photo/falooda-love-royal-tower-260nw-1973944421.jpg"];
+                let currentIndex = 0;
+                const imgElement = document.querySelector(".slider-image");
+                const nextBtn = document.getElementById("nextBtn");
+                const prevBtn = document.getElementById("prevBtn");
+                nextBtn.addEventListener("click", () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    imgElement.src = images[currentIndex];
+                });
+                prevBtn.addEventListener("click", () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    imgElement.src = images[currentIndex];
+                });
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    imgElement.src = images[currentIndex];
+                }, 3000);
+            </script>
+        </body>
+</html>
